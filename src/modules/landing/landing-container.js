@@ -4,6 +4,7 @@ import { View, Button, StyleSheet, Alert } from 'react-native';
 class Landing extends React.Component {
   
   _goToClashRoyale() {
+    const { navigate } = this.props.navigation;
     Alert.alert('You Tapped Clash Royale')
     navigate('ClashRoyale')
   }
@@ -17,15 +18,16 @@ class Landing extends React.Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return(
       <View style={StyleSheet.container}>
         <Button 
-          onPress={this._goToClashRoyale}
+          onPress={() => navigate('ClashRoyale')}
           title = "Clash Royale"
           color="#adab20"
         />
         <Button 
-          onPress={this._goToClashOfClans}
+          onPress={() => navigate('ClashOfClans')}
           title = "Clash Of Clans"
           color="#adab20"
         />
