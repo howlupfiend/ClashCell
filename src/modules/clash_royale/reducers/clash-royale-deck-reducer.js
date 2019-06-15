@@ -1,7 +1,7 @@
 import { 
-    FETCH_DECK_DATA_FAILED,
+    FETCH_DECK_DATA_STARTED,
     FETCH_DECK_DATA_SUCCESS,
-    FETCH_DECK_DATA_SUCCESS
+    FETCH_DECK_DATA_FAILED
  } from '../actions/deck-list-action-constants';
 import deckTransformer from '../transformers/deck-transformer'
 
@@ -9,7 +9,7 @@ const initialState = {
     loading: false,
     error: null,
     decks: {
-        cards: []
+        cards: [],
     }
 };
 

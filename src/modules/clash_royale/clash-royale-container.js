@@ -1,8 +1,9 @@
 import React from 'react';
 import * as Font from 'expo-font';
-import { View, Text, StyleSheet, Image} from 'react-native'
+import { View, Text, StyleSheet, Image , AsyncStorage} from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { connect } from 'react-redux'
+
 
 import { fetchProfileData } from './actions/profile-search-actions';
 
@@ -15,7 +16,15 @@ class ClashRoyale extends React.Component {
 
         const { fetchProfileDataAction } = this.props;
         fetchProfileDataAction("9RP08Y28Y");
+        // fetchProfileDataAction("UL0JU92V");
+        
     }
+
+    // _storeData = async () => {
+    //     try {
+    //         await AsyncStorage.setItem('')
+    //     }
+    // }
 
     render(){
         const {
@@ -60,7 +69,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     statsContainer: {
-        fontFamily: 'ClashFont',
+        fontFamily: 'clashfont',
     }
 });
 

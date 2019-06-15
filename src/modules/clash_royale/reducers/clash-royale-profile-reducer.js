@@ -27,7 +27,6 @@ const initialState = {
                 image: "Loading..."
             }
         },
-
     }
 };
 

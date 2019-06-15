@@ -31,8 +31,8 @@ const mapStateToProps = (state) => {
     const { ClashRoyaleDeckReducer } = state;
     return {
         cards: ClashRoyaleDeckReducer.decks.cards
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, {
     fetchPopularDecksAction: fetchPopularDecks,

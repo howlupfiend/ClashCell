@@ -1,7 +1,7 @@
 export default function deckTransformer({
-    cards
+    cards,
 }) {
     return {
-        cards
+        cards,
     };
 }
