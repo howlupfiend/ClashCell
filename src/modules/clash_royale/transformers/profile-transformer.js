@@ -1,7 +1,11 @@
 export default function profileTransformer({
-    profileId
+    name, trophies, rank, arena,
 }) {
+    const leagueRank = (rank != null) ? rank : "None"
     return {
-        profileId
+        name,
+        trophies,
+        leagueRank,
+        arena,
     };
 }

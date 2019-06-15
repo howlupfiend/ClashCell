@@ -10,7 +10,14 @@ const initialState = {
     loading: false,
     error: null,
     profile: {
-        profileId: "Profile Id" 
+        name: "Data not loaded...",
+        trophies: "Data not loaded...",
+        leagueRank: "Data not loaded...",
+        arena: {
+            name: "Test",
+            arena: "Arena --",
+            trophyLimit: 0
+        }
     }
 };
 

@@ -8,7 +8,7 @@ export const fetchProfileData = (profileId) => {
 
     return dispatch => new Promise((resolve, reject) => {
         dispatch(fetchProfileDataStarted());
-        axios.get(apiUrl, {headers: {"Authentication" : `${apiToken}`}})
+        axios.get(apiUrl, {headers: {"Authorization" : `${apiToken}`}})
             .then((response) => {
                 dispatch(fetchProfileDataSuccess(response.data));
                 resolve(response);

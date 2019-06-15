@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Stylesheet} from 'react-native'
+import * as Font from 'expo-font';
+import { View, Text, StyleSheet} from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { connect } from 'react-redux'
 
@@ -8,25 +9,32 @@ import { fetchProfileData } from './actions/profile-search-actions';
 
 class ClashRoyale extends React.Component {
     componentDidMount() {
-        const { fetchProfileId } = this.props;
-        fetchProfileData("9RP08Y28Y");
-        console.log(fetchProfileData("9RP08Y28Y"))
-    }
+        const { fetchProfileDataAction } = this.props;
+        fetchProfileDataAction("9RP08Y28Y");
 
-    static navigationOptions = {
-        headerTitle: <Text>Clash Royale</Text>
+        Font.loadAsync({
+            'clash-font': require('../../../assets/fonts/ClashFont.ttf'),
+        });
     }
 
     render(){
         const {
-            profileId,
+            name,
+            trophies,
+            leagueRank,
+            arena,
         } = this.props;
 
         return(
             <SafeAreaView>
                 <View>
-                    <Text>Welcome to Clash Royale Stats</Text>
-                    <Text>{profileId}</Text>
+                    <Text  styles={{ fontFamily: 'clash-font', fontSize: 20 }}>
+                        Name: {name}{"\n"}
+                        Amount of trophies: {trophies}{"\n"}
+                        Rank: {leagueRank}{"\n"}
+                        Arena: {arena.name} - {arena.arena}{"\n"}
+                        Trophy Limit: {arena.trophyLimit}{"\n"}
+                    </Text>
                 </View>
             </SafeAreaView>
 
@@ -34,10 +42,23 @@ class ClashRoyale extends React.Component {
     }
 }
 
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         justifyContent: 'flex-start',
+//     },
+//     statsContainer: {
+//         fontFamily: 'ClashFont',
+//     }
+// });
+
 const mapStateToProps = (state) => {
-    const { clashRoyaleProfileReducer } = state;
+    const { ClashRoyaleProfileReducer } = state;
     return {
-        profileId: clashRoyaleProfileReducer.profileId,
+        name: ClashRoyaleProfileReducer.profile.name,
+        trophies: ClashRoyaleProfileReducer.profile.trophies,
+        leagueRank: ClashRoyaleProfileReducer.profile.leagueRank,
+        arena: ClashRoyaleProfileReducer.profile.arena,
     };
 };
 
