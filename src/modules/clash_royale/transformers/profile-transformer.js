@@ -1,5 +1,5 @@
 export default function profileTransformer({
-    name, trophies, rank, arena,
+    name, trophies, rank, arena, clan,
 }) {
     const leagueRank = (rank != null) ? rank : "None"
     return {
@@ -7,5 +7,6 @@ export default function profileTransformer({
         trophies,
         leagueRank,
         arena,
+        clan,
     };
 }

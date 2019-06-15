@@ -1,16 +1,17 @@
-import React , { Component }from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
 import { createStore , applyMiddleware } from 'redux';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 import rootReducer from './src/reducers';
-import Landing from './src/modules/landing/landing-container'
+import Landing from './src/modules/landing/landing-container';
 import ClashRoyale from './src/modules/clash_royale/clash-royale-container';
-import ClashRoyaleDecks from './src/modules/clash_royale/clash-royale-deck-container'
+import ClashRoyaleDecks from './src/modules/clash_royale/clash-royale-deck-container';
+import ClashRoyaleSearch from './src/modules/clash_royale/clash-royale-search-container';
 import ClashOfClans from './src/modules/clash_of_clans/clash-of-clans-container';
 
 export const App = () => {
@@ -31,11 +32,17 @@ export const App = () => {
                           tabBarLabel: "Decks"
                         })
                       },
+                      ClashRoyaleSearch: {
+                        screen: ClashRoyaleSearch,
+                        navigationOptions: ({ navigation }) => ({
+                          tabBarLabel: "Search"
+                        })
+                      }
                     }, 
                     {
-                      order: ['ClashRoyale', 'ClashRoyaleDecks'],
+                      order: ['ClashRoyale', 'ClashRoyaleDecks', 'ClashRoyaleSearch'],
                       tabBarOptions: {
-                        activeTintColor: 'yellow',
+                        activeTintColor: 'green',
                         inactiveTintColor: 'gray',
                         style: {
                           backgroundColor: 'white',

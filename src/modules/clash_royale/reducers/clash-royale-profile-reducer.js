@@ -14,10 +14,20 @@ const initialState = {
         trophies: "Data not loaded...",
         leagueRank: "Data not loaded...",
         arena: {
-            name: "Test",
-            arena: "Arena --",
+            name: "Loading...",
+            arena: "Loading...",
             trophyLimit: 0
-        }
+        },
+        clan: {
+            name: "Loading...",
+            role: "Loading...",
+            donations: "Loading...",
+            tag: "Loading...",
+            badge: {
+                image: "Loading..."
+            }
+        },
+
     }
 };
 
