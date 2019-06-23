@@ -5,6 +5,7 @@ import { createStore , applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { Icon } from 'react-native-elements'
 
 
 import rootReducer from './src/reducers';
@@ -23,19 +24,28 @@ export const App = () => {
                       ClashRoyale: {
                         screen: ClashRoyale,
                         navigationOptions: ({ navigation }) => ({
-                          tabBarLabel: "Profile Stats"
+                          tabBarLabel: "Profile Stats",
+                          tabBarIcon: () => (
+                            <Icon name="ios-person" type='ionicon'></Icon>
+                          )
                         })
                       },
                       ClashRoyaleDecks: {
                         screen: ClashRoyaleDecks,
                         navigationOptions: ({ navigation }) => ({
-                          tabBarLabel: "Decks"
+                          tabBarLabel: "Decks",
+                          tabBarIcon: () => (
+                            <Icon name="ios-albums" type='ionicon'></Icon>
+                          )
                         })
                       },
                       ClashRoyaleSearch: {
                         screen: ClashRoyaleSearch,
                         navigationOptions: ({ navigation }) => ({
-                          tabBarLabel: "Search"
+                          tabBarLabel: "Search",
+                          tabBarIcon: () => (
+                            <Icon name="ios-search" type='ionicon'></Icon>
+                          )
                         })
                       }
                     }, 
@@ -81,7 +91,7 @@ export const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#084bcc",
     alignItems: 'center',
     justifyContent: 'center',
   },

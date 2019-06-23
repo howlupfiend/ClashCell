@@ -9,7 +9,7 @@ const initialState = {
     loading: false,
     error: null,
     decks: {
-        cards: [],
+        popularDecks: [],
     }
 };
 

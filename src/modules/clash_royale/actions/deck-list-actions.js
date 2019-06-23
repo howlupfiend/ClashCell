@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FETCH_DECK_DATA_STARTED, FETCH_DECK_DATA_SUCCESS, FETCH_DECK_DATA_FAILED} from './deck-list-action-constants'
 
 export const fetchPopularDecks = () => {
-    const apiUrl = 'https://api.royaleapi.com/popular/decks';
+    const apiUrl = `https://api.royaleapi.com/popular/decks?max=10`;
 
     const apiToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjY2NCwiaWRlbiI6IjE4OTY4NjUxODA2NjA1MzEyMCIsIm1kIjp7fSwidHMiOjE1NjAxMDc3MTQwMTR9.uj9Zxixf_wqnUrP37yf3R44czNUb5nTNeK3BMqQmQQg";
 

@@ -53,7 +53,7 @@ class ClashRoyale extends React.Component {
                           Current Weekly Donations: {clan.donations}{"\n"}
                     </Text>
                     <Image 
-                        style={{width: 75, height: 75}}
+                        style={{width: 75, height: 75, position:"absolute", top:0, right:0}}
                         source={{uri: clan.badge.image}}
                     />
                 </View>

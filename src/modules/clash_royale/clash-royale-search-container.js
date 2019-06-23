@@ -9,7 +9,7 @@ class ClashRoyaleSearch extends React.Component {
         return(
             <SafeAreaView>
                 <View>
-                    {/* <SearchInput></SearchInput>  */}
+                    <SearchInput></SearchInput> 
                 </View>
             </SafeAreaView>
         );
@@ -24,7 +24,7 @@ class SearchInput extends React.Component{
 
     render() {
         return (
-            <TextInput style={{height: 30, borderColor:'gray', borderWidth:1}}
+            <TextInput style={{height: 30, borderColor:'gray', borderWidth:3,}}
             onChangeText={(text) => this.setState({text})}
             value={this.state.text}
             />
