@@ -1,30 +1,54 @@
 import React from 'react';
 import * as Font from 'expo-font';
-import { View, Text, StyleSheet, Image , AsyncStorage} from 'react-native'
+import { View, Text, StyleSheet, Image , AsyncStorage, ScrollView} from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { connect } from 'react-redux'
 
-
+import { DeckCard } from './deck-card'
+import { Profile } from './profile-container'
 import { fetchProfileData } from './actions/profile-search-actions';
 
 
 class ClashRoyale extends React.Component {
+
+    // componentWillMount() {
+    //     this._storeProfileData("9RP08Y28Y")
+    // }
+
     componentDidMount() {
         Font.loadAsync({
             clashfont: require('../../../assets/fonts/ClashFont.ttf'),
         });
-
         const { fetchProfileDataAction } = this.props;
+        // const profileId = this._retrieveProfileData()
+        // console.log(profileId)
+        // fetchProfileDataAction(profileId);
+        
         fetchProfileDataAction("9RP08Y28Y");
-        // fetchProfileDataAction("UL0JU92V");
         
     }
 
-    // _storeData = async () => {
-    //     try {
-    //         await AsyncStorage.setItem('')
-    //     }
-    // }
+    _storeProfileData = async (profileId) => {
+        try {
+            // console.log(profileId)
+            await AsyncStorage.setItem('profileId', profileId )
+        } catch (error) {
+            console.log("Error saving data")
+        }
+    }
+
+    _retrieveProfileData = async () => {
+        try {
+            const value = await AsyncStorage.getItem('profileId');
+            // console.log(value)
+            if (value !== null) {
+                // Our data is fetched successfully
+                console.log(value);
+            }
+        } catch (error) {
+            // Error retrieving data
+        }
+    }
 
     render(){
         const {
@@ -33,31 +57,23 @@ class ClashRoyale extends React.Component {
             leagueRank,
             arena,
             clan,
+            games,
+            leagueStatistics,
+            currentDeck,
         } = this.props;
 
         return(
-            <SafeAreaView>
-                <View>
-                    <Text  styles={ styles.statsContainer }>
-                        Name: {name}{"\n"}
-                        Amount of trophies: {trophies}{"\n"}
-                        Rank: {leagueRank}{"\n"}
-                        Arena: {arena.name} - {arena.arena}{"\n"}
-                        Trophy Limit: {arena.trophyLimit}{"\n"}
-                    </Text>
-                </View>
-                <View>
-                    <Text>Clan Info</Text>
-                    <Text>Name: {clan.name}  Tag: {clan.tag}{"\n"}
-                          Clan Role: {clan.role}{"\n"}
-                          Current Weekly Donations: {clan.donations}{"\n"}
-                    </Text>
-                    <Image 
-                        style={{width: 75, height: 75, position:"absolute", top:0, right:0}}
-                        source={{uri: clan.badge.image}}
+                <View style={styles.container}>
+                    <Profile name={name}
+                    trophies={trophies}
+                    leagueRank={leagueRank}
+                    arena={arena}
+                    clan={clan}
+                    games={games}
+                    leagueStatistics={leagueStatistics}
+                    currentDeck={currentDeck}
                     />
                 </View>
-            </SafeAreaView>
 
         );
     }
@@ -65,12 +81,8 @@ class ClashRoyale extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'flex-start',
+
     },
-    statsContainer: {
-        fontFamily: 'clashfont',
-    }
 });
 
 const mapStateToProps = (state) => {
@@ -81,6 +93,9 @@ const mapStateToProps = (state) => {
         leagueRank: ClashRoyaleProfileReducer.profile.leagueRank,
         arena: ClashRoyaleProfileReducer.profile.arena,
         clan: ClashRoyaleProfileReducer.profile.clan,
+        games: ClashRoyaleProfileReducer.profile.games,
+        leagueStatistics: ClashRoyaleProfileReducer.profile.leagueStatistics,
+        currentDeck: ClashRoyaleProfileReducer.profile.currentDeck,
     };
 };
 

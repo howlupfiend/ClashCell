@@ -10,23 +10,39 @@ const initialState = {
     loading: false,
     error: null,
     profile: {
-        name: "Data not loaded...",
-        trophies: "Data not loaded...",
-        leagueRank: "Data not loaded...",
+        name: "",
+        trophies: "",
+        leagueRank: "",
         arena: {
-            name: "Loading...",
-            arena: "Loading...",
+            name: "",
+            arena: "",
             trophyLimit: 0
         },
         clan: {
-            name: "Loading...",
-            role: "Loading...",
-            donations: "Loading...",
-            tag: "Loading...",
+            name: "",
+            role: "",
+            donations: "",
+            tag: "",
             badge: {
-                image: "Loading..."
+                image: "loading"
             }
         },
+        games: {
+            total: 0,
+            tournamentGames: 0,
+            wins: 0,
+            warDayWins: 0,
+            winsPercent: 0,
+            losses: 0,
+            draws: 0,
+        },
+        leagueStatistics: {
+            currentSeason: {
+                trophies: 0,
+                bestTrophies: 0
+            }
+        },
+        currentDeck: []
     }
 };
 

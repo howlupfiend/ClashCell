@@ -24,11 +24,12 @@ class ClashRoyaleDecks extends React.Component {
                 <View>
                 </View>
                 <ScrollView>
-                {popularDecks.map((deck, index) => (
-                    <DeckCard 
-                        deck={deck}
-                        index={index}> 
-                    </DeckCard>
+                {popularDecks.map((deck, i) => (
+                    <View style={styles.contentContainer} key={i}>
+                        <DeckCard
+                            deck={deck}>
+                        </DeckCard>
+                    </View>
                     )
                 )
                 }
@@ -41,13 +42,26 @@ class ClashRoyaleDecks extends React.Component {
 const styles = StyleSheet.create({
     mainContainer: {
         backgroundColor: "#084bcc",
+        flex: 1,
     },
     contentText: {
         color: "white",
         textAlign: "center",
         fontWeight: "bold",
         fontSize: 25,
-    }
+    },
+    contentContainer: {
+        borderWidth: 1,
+        margin: 7,
+        backgroundColor: "white",
+        borderColor: "black",
+        zIndex: 5,
+        padding: 5,
+        borderRadius:5,
+        shadowOffset:{  width: 1,  height: 1,  },
+        shadowColor: 'black',
+        shadowOpacity: 1.0,
+    },
   });
 
 const mapStateToProps = (state) => {
