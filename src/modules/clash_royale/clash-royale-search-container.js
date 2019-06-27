@@ -3,25 +3,25 @@ import { View, Text, Alert, StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { connect } from 'react-redux'
 import { Isao } from 'react-native-textinput-effects'
-import Clash from './clash-royale-container'
-import { fetchProfileData } from './actions/profile-search-actions';
 
+
+import { fetchSearchProfileData } from './actions/profile-search-actions';
 import { Profile } from './profile-container'
 
 class ClashRoyaleSearch extends React.Component {
 
     state = {
-        profile: '',
+        profileId: '',
         profileEnabled: false,
     };
 
     handleSubmit() {
-        const { profile } = this.state;
-        const { fetchProfileDataAction } = this.props;
+        const { profileId } = this.state;
+        const { fetchSearchProfileDataAction } = this.props;
 
-        if (!profile) return console.log('Please enter valid tag');
+        if (!profileId) return console.log('Please enter valid tag');
 
-        return fetchProfileDataAction(profile)
+        return fetchSearchProfileDataAction(profileId)
             .then(() => {
                 this.setState({ profileEnabled: true })
             })
@@ -54,7 +54,7 @@ class ClashRoyaleSearch extends React.Component {
     }
 
     render() {
-        const { profile } = this.state;
+        const { profileId } = this.state;
 
         return (
 
@@ -68,9 +68,9 @@ class ClashRoyaleSearch extends React.Component {
                         // inputPadding={10}
                         // labelHeight={10}
                         passiveColor={'red'}
-                        onChangeText={(input) => this.setState({ profile: input })}
+                        onChangeText={(input) => this.setState({ profileId: input })}
                         onSubmitEditing={() => this.handleSubmit()}
-                        value={profile}
+                        value={profileId}
                     />
                     {this.state.profileEnabled && this.renderProfile()}
                 </View>
@@ -93,16 +93,16 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     const { ClashRoyaleProfileReducer } = state;
     return {
-        name: ClashRoyaleProfileReducer.profile.name,
-        trophies: ClashRoyaleProfileReducer.profile.trophies,
-        leagueRank: ClashRoyaleProfileReducer.profile.leagueRank,
-        arena: ClashRoyaleProfileReducer.profile.arena,
-        clan: ClashRoyaleProfileReducer.profile.clan,
-        games: ClashRoyaleProfileReducer.profile.games,
-        leagueStatistics: ClashRoyaleProfileReducer.profile.leagueStatistics,
-        currentDeck: ClashRoyaleProfileReducer.profile.currentDeck,
+        name: ClashRoyaleProfileReducer.searchProfile.name,
+        trophies: ClashRoyaleProfileReducer.searchProfile.trophies,
+        leagueRank: ClashRoyaleProfileReducer.searchProfile.leagueRank,
+        arena: ClashRoyaleProfileReducer.searchProfile.arena,
+        clan: ClashRoyaleProfileReducer.searchProfile.clan,
+        games: ClashRoyaleProfileReducer.searchProfile.games,
+        leagueStatistics: ClashRoyaleProfileReducer.searchProfile.leagueStatistics,
+        currentDeck: ClashRoyaleProfileReducer.searchProfile.currentDeck,
     };
 };
 export default connect(mapStateToProps, {
-    fetchProfileDataAction: fetchProfileData,
+    fetchSearchProfileDataAction: fetchSearchProfileData,
 })(ClashRoyaleSearch)

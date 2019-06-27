@@ -11,21 +11,18 @@ import { fetchProfileData } from './actions/profile-search-actions';
 
 class ClashRoyale extends React.Component {
 
-    // componentWillMount() {
-    //     this._storeProfileData("9RP08Y28Y")
-    // }
+    componentWillMount() {
+        this._storeProfileData("9RP08Y28Y")
+    }
 
-    componentDidMount() {
+    async componentDidMount() {
         Font.loadAsync({
             clashfont: require('../../../assets/fonts/ClashFont.ttf'),
         });
         const { fetchProfileDataAction } = this.props;
-        // const profileId = this._retrieveProfileData()
-        // console.log(profileId)
-        // fetchProfileDataAction(profileId);
-        
-        fetchProfileDataAction("9RP08Y28Y");
-        
+
+            const profileId = await this._retrieveProfileData()
+            fetchProfileDataAction(profileId);
     }
 
     _storeProfileData = async (profileId) => {
@@ -43,7 +40,8 @@ class ClashRoyale extends React.Component {
             // console.log(value)
             if (value !== null) {
                 // Our data is fetched successfully
-                console.log(value);
+
+                return value;
             }
         } catch (error) {
             // Error retrieving data

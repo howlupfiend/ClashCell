@@ -20,6 +20,25 @@ export const fetchProfileData = (profileId) => {
     });
 };
 
+export const fetchSearchProfileData = (profileId) => {
+    const apiUrl = `https://api.royaleapi.com/player/${profileId}`;
+
+    const apiToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjY2NCwiaWRlbiI6IjE4OTY4NjUxODA2NjA1MzEyMCIsIm1kIjp7fSwidHMiOjE1NjAxMDc3MTQwMTR9.uj9Zxixf_wqnUrP37yf3R44czNUb5nTNeK3BMqQmQQg";
+
+    return dispatch => new Promise((resolve, reject) => {
+        dispatch(fetchProfileDataStarted());
+        axios.get(apiUrl, {headers: {"Authorization" : `${apiToken}`}})
+            .then((response) => {
+                dispatch(fetchSearchProfileDataSuccess(response.data));
+                resolve(response);
+            })
+            .catch((err) => {
+                dispatch(fetch)
+                reject(err)
+            });
+    });
+};
+
 export const fetchProfileDataStarted = () => ({
     type: FETCH_PROFILE_DATA_STARTED,
 });
@@ -29,7 +48,13 @@ export const fetchProfileDataSuccess = data => ({
     payload: data
 });
 
+export const fetchSearchProfileDataSuccess = data => ({
+    type: "FETCH_SEARCH_PROFILE_SUCCESS",
+    payload: data
+});
+
 export const fetchProfileDataFailed = data => ({
     type: FETCH_PROFILE_DATA_FAILED,
     payload: data
 });
+
