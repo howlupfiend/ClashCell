@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Alert, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { connect } from 'react-redux'
 import { Isao } from 'react-native-textinput-effects'

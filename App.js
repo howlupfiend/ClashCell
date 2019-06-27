@@ -13,6 +13,8 @@ import Landing from './src/modules/landing/landing-container';
 import ClashRoyale from './src/modules/clash_royale/clash-royale-container';
 import ClashRoyaleDecks from './src/modules/clash_royale/clash-royale-deck-container';
 import ClashRoyaleSearch from './src/modules/clash_royale/clash-royale-search-container';
+import ClashRoyaleTopPlayers from './src/modules/clash_royale/clash-royale-top-players-container';
+
 import ClashOfClans from './src/modules/clash_of_clans/clash-of-clans-container';
 
 export const App = () => {
@@ -47,10 +49,19 @@ export const App = () => {
                             <Icon name="ios-search" type='ionicon'></Icon>
                           )
                         })
-                      }
+                      },
+                      ClashRoyaleTopPlayers: {
+                        screen: ClashRoyaleTopPlayers,
+                        navigationOptions: ({ navigation }) => ({
+                          tabBarLabel: "Top Players",
+                          tabBarIcon: () => (
+                            <Icon name="ios-person" type='ionicon'></Icon>
+                          )
+                        })
+                      },
                     }, 
                     {
-                      order: ['ClashRoyale', 'ClashRoyaleDecks', 'ClashRoyaleSearch'],
+                      order: ['ClashRoyale', 'ClashRoyaleDecks', 'ClashRoyaleTopPlayers', 'ClashRoyaleSearch'],
                       tabBarOptions: {
                         activeTintColor: 'green',
                         inactiveTintColor: 'gray',

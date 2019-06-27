@@ -1,10 +1,8 @@
 import React from 'react';
 import * as Font from 'expo-font';
-import { View, Text, StyleSheet, Image , AsyncStorage, ScrollView} from 'react-native'
-import { SafeAreaView } from 'react-navigation'
+import { View, StyleSheet, AsyncStorage} from 'react-native'
 import { connect } from 'react-redux'
 
-import { DeckCard } from './deck-card'
 import { Profile } from './profile-container'
 import { fetchProfileData } from './actions/profile-search-actions';
 

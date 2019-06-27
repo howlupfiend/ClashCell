@@ -26,7 +26,7 @@ export const DeckCard =({
                     return (
                     <Image
                         key = {i}
-                        style={{width: 75, height: 100, margin: 7}}
+                        style={{width: 75, height: 100, margin: 3}}
                         source={{uri: card.icon}}
                     />
                     );
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexWrap: "wrap",
         flexDirection: "row",
-        padding: 10
+        padding: 8
     },
     cardContent: {
         fontSize: 15,
