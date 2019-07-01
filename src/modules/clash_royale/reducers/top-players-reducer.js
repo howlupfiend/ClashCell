@@ -3,13 +3,13 @@ import {
     FETCH_TOP_PLAYERS_DATA_SUCCESS,
     FETCH_TOP_PLAYERS_DATA_FAILED
  } from '../actions/top-players-constants';
- import topPlayerTransformer from '../transformers/top-players-transformer'
+
  
 
 const initialState = {
     loading: false,
     error: null,
-    players: []
+    topPlayers: []
 };
 
 const ClashRoyaleTopPlayersReducer = (state = initialState, action) => {
@@ -24,7 +24,7 @@ const ClashRoyaleTopPlayersReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: null,
-                profile: topPlayerTransformer(action.payload),
+                topPlayers: action.payload.splice(0,10),
             };  
         case FETCH_TOP_PLAYERS_DATA_FAILED:
             return {

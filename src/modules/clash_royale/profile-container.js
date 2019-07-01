@@ -44,7 +44,7 @@ export const Profile =({
                         <Text style={styles.statsContent}>Total wins: {games.wins}</Text>
                         <Text style={styles.statsContent}>Total war day wins: {games.warDayWins}</Text>
                         <Text style={styles.statsContent}>Total win percentage: {Math.round(games.winsPercent * 100).toFixed(1)}%</Text>
-                        <Text style={styles.statsContent}>Total games lossed: {games.losses}</Text>
+                        <Text style={styles.statsContent}>Total games lost: {games.losses}</Text>
                         <Text style={styles.statsContent}>Total games drawn: {games.draws}</Text>
                     </View>
                     <View style={ styles.contentContainer }>

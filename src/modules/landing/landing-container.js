@@ -38,7 +38,6 @@ class Landing extends React.Component {
     let latitude = location.coords.latitude
     let currentLocation = await Location.reverseGeocodeAsync({latitude, longitude})
     console.log(currentLocation)
-    this.setState({ currentLocation });
   };
 
   _goToBrawlStars() {
@@ -46,13 +45,6 @@ class Landing extends React.Component {
   }
 
   render() {
-    let text = 'Waiting...'
-
-    if (this.state.errorMessage) {
-      text = this.state.errorMessage;
-    } else if (this.state.currentLocation) {
-      text = JSON.stringify(this.state.currentLocation);
-    }
 
     const { navigate } = this.props.navigation;
     return(
@@ -72,8 +64,6 @@ class Landing extends React.Component {
             <Text>Brawl Stars</Text>
           </TouchableHighlight>
         </View>
-
-        <Text>{text}</Text>
       </View>
     );
   }
